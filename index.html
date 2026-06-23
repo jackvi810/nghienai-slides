@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nghiên AI — Flagship Slides Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-coral: #FF623B;
+      --color-dark: #2A3140;
+      --color-paper: #F7F5ED;
+      --color-paper-raised: #FFFDF6;
+      --color-line: #D9D4C2;
+      --font-serif: "IBM Plex Serif", Georgia, serif;
+      --font-sans: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--color-paper);
+      color: var(--color-dark);
+      font-family: var(--font-sans);
+      padding: 60px 40px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 3px solid var(--color-dark);
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--color-coral);
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+    .profile-card {
+      background: var(--color-paper-raised);
+      border: 2px solid var(--color-dark);
+      box-shadow: 4px 4px 0 var(--color-dark);
+      padding: 30px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--color-dark);
+    }
+    .profile-info h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .profile-info p {
+      font-size: 16px;
+      color: #5A6272;
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .bento-card {
+      background: var(--color-paper-raised);
+      border: 2px solid var(--color-dark);
+      box-shadow: 4px 4px 0 var(--color-dark);
+      padding: 30px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .bento-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--color-dark);
+    }
+    .tag {
+      display: inline-block;
+      background: var(--color-coral);
+      color: white;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 4px 10px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 16px;
+      color: #5A6272;
+      margin-bottom: 24px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border: 2px solid var(--color-dark);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      background: var(--color-paper-raised);
+      color: var(--color-dark);
+      box-shadow: 2px 2px 0 var(--color-dark);
+      transition: all 0.15s;
+    }
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--color-dark);
+    }
+    .btn.primary {
+      background: var(--color-coral);
+      color: white;
+    }
+    .btn.primary:hover {
+      background: #E14E28;
+    }
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid var(--color-line);
+      padding-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #8B92A1;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media (max-width: 600px) {
+      body { padding: 30px 20px; }
+      h1 { font-size: 32px; }
+      .profile-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <div>
+          <h1>Nghiên AI</h1>
+          <div class="subtitle">Flagship Slides Hub</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 600;">v1.0</div>
+      </div>
+    </header>
+
+    <div class="profile-card">
+      <img class="profile-avatar" src="assets/people/jack_vi_avatar.png" alt="Jack Vĩ">
+      <div class="profile-info">
+        <h3>Jack Vĩ</h3>
+        <p>Founder &amp; Creator tại Cộng đồng Nghiên AI (640,000+ Thành viên)</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Card Video 2 -->
+      <div class="bento-card">
+        <div class="tag">VIDEO 2</div>
+        <h2 class="card-title">AI Model Origins — Mô Hình Nền Tảng (Mỹ vs Trung Quốc)</h2>
+        <p class="card-desc">Slide trình chiếu động phân tích nguồn gốc công nghệ, thế mạnh cốt lõi, so sánh chi phí và tiêu chuẩn bảo mật của các mô hình AI lớn từ Hoa Kỳ và Trung Quốc.</p>
+        <div class="btn-group">
+          <a class="btn primary" href="v2-model-origins/">👉 Xem Slide Trực Tuyến</a>
+          <a class="btn" href="https://github.com/jackvi810/ai-models" target="_blank">📂 Tải Cẩm Nang &amp; Tài Nguyên</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span>&copy; 2026 Nghiên AI. All rights reserved.</span>
+      <span>Vĩ / Nghiên AI Voice</span>
+    </footer>
+  </div>
+</body>
+</html>

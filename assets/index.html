@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NghienAI Assets Hub</title>
+  <style>
+    :root {
+      --paper: #f7f5ed;
+      --paper-2: #fffdf6;
+      --ink: #2a3140;
+      --ink-soft: #556070;
+      --line: rgba(42, 49, 64, 0.14);
+      --coral: #ff623b;
+      --shadow: 0 18px 48px rgba(42, 49, 64, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+      --sans: "IBM Plex Sans", system-ui, sans-serif;
+      --serif: "IBM Plex Serif", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 98, 59, 0.1), transparent 28%),
+        linear-gradient(180deg, #fbf8f1 0%, var(--paper) 100%);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .hero-card,
+    .panel,
+    .thumb {
+      background: rgba(255, 253, 246, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 28px 30px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      top: -42px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at center, rgba(255, 98, 59, 0.16) 0 32%, rgba(255, 98, 59, 0) 33%),
+        radial-gradient(circle, rgba(42, 49, 64, 0.18) 1px, transparent 1.8px);
+      background-size: 100% 100%, 10px 10px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 62ch;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .hero-side {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .hero-side h2 {
+      margin: 0;
+      font-size: 16px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink-soft);
+    }
+
+    .hero-side p,
+    .hero-side li {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .hero-side ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .jump a {
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 246, 0.8);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+    }
+
+    .jump a:hover,
+    .link:hover {
+      border-color: rgba(255, 98, 59, 0.45);
+      color: var(--coral);
+    }
+
+    section {
+      margin-top: 36px;
+    }
+
+    section > header {
+      margin-bottom: 16px;
+    }
+
+    section h3 {
+      margin: 0 0 6px;
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    section p {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .grid-wide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .panel,
+    .thumb {
+      padding: 18px;
+    }
+
+    .panel h4,
+    .thumb h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .meta {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.5);
+      min-height: 44px;
+    }
+
+    .asset-preview {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(247,245,237,0.92));
+      margin-bottom: 12px;
+      padding: 12px;
+    }
+
+    .image-preview {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #efe8db;
+      margin-bottom: 12px;
+    }
+
+    .note {
+      margin-top: 40px;
+      padding: 18px 20px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(42, 49, 64, 0.22);
+      background: rgba(255, 253, 246, 0.68);
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: var(--mono);
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="hero">
+      <article class="hero-card">
+        <p class="eyebrow">Recovered Workspace Hub</p>
+        <h1>NghienAI assets, pages, và output đã làm</h1>
+        <p class="lead">
+          Đây là hub khôi phục để xem lại một chỗ tất cả phần brand assets, preview pages,
+          HTML demos, benchmark deck, open-slide build, và các image output quan trọng còn nằm rải
+          trong workspace.
+        </p>
+      </article>
+
+      <aside class="hero-card hero-side">
+        <h2>Đã khôi phục</h2>
+        <ul>
+          <li>Bộ preview cũ từ <code>archive/root/preview/</code> sang <code>brand-identity/preview/</code></li>
+          <li>Assets gốc trong <code>brand-identity/assets/</code></li>
+          <li>Project HTML và image output trong <code>brand-identity/projects/</code></li>
+          <li>HTML Slide demos, benchmark deck, open-slide build tĩnh</li>
+        </ul>
+      </aside>
+    </div>
+
+    <nav class="jump">
+      <a href="#brand-assets">Brand Assets</a>
+      <a href="#preview-pages">Preview Pages</a>
+      <a href="#project-pages">Project HTML</a>
+      <a href="#slides">Slide Systems</a>
+      <a href="#image-output">Image Output</a>
+    </nav>
+
+    <section id="brand-assets">
+      <header>
+        <h3>Brand Assets</h3>
+        <p>Logo, logomark, texture, cover và shape gốc còn đang active ở <code>brand-identity/assets/</code>.</p>
+      </header>
+      <div class="grid">
+        <article class="thumb">
+          <img class="asset-preview" src="./logo-orange.svg" alt="Logo orange" />
+          <span class="meta">Logo</span>
+          <h4>Logo orange</h4>
+          <div class="links">
+            <a class="link" href="./logo-orange.svg">Mở file</a>
+            <a class="link" href="./logo/NghienAI_logo_orangetext.svg">Logo text variant</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="asset-preview" src="./logomark-orange.svg" alt="Logomark orange" />
+          <span class="meta">Logomark</span>
+          <h4>Logomark orange</h4>
+          <div class="links">
+            <a class="link" href="./logomark-orange.svg">Mở file</a>
+            <a class="link" href="./logomark-white.svg">Biến thể trắng</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="asset-preview" src="./halftone-dense.png" alt="Halftone dense" />
+          <span class="meta">Texture</span>
+          <h4>Halftone dense</h4>
+          <div class="links">
+            <a class="link" href="./halftone-dense.png">Dense</a>
+            <a class="link" href="./halftone-medium.png">Medium</a>
+            <a class="link" href="./halftone-sparse.png">Sparse</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="asset-preview" src="./rough-rect-wide.png" alt="Rough shapes" />
+          <span class="meta">Shape</span>
+          <h4>Rough & square shapes</h4>
+          <div class="links">
+            <a class="link" href="./rough-rect-wide.png">Rough wide</a>
+            <a class="link" href="./shape-square-coral.png">Square coral</a>
+            <a class="link" href="./shape-circle.png">Circle</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="asset-preview" src="./cover-facebook.png" alt="Cover Facebook" />
+          <span class="meta">Cover</span>
+          <h4>Channel covers</h4>
+          <div class="links">
+            <a class="link" href="./cover-facebook.png">Facebook cover</a>
+            <a class="link" href="./cover-youtube.png">YouTube cover</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="asset-preview" src="./avatar.png" alt="Avatar" />
+          <span class="meta">Avatar</span>
+          <h4>Avatar</h4>
+          <div class="links">
+            <a class="link" href="./avatar.png">Mở file avatar</a>
+            <a class="link" href="../README.md">Xem repo map</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="preview-pages">
+      <header>
+        <h3>Preview Pages</h3>
+        <p>Toàn bộ trang preview brand/foundation/component cũ đã được đưa về vùng active <code>brand-identity/preview/</code>.</p>
+      </header>
+      <div class="grid-wide">
+        <article class="panel">
+          <span class="meta">Brand</span>
+          <h4>Logo, logomark, halftone, shapes</h4>
+          <div class="links">
+            <a class="link" href="../preview/brand/brand-logos.html">Brand logos</a>
+            <a class="link" href="../preview/brand/brand-logomarks.html">Brand logomarks</a>
+            <a class="link" href="../preview/brand/brand-halftones.html">Brand halftones</a>
+            <a class="link" href="../preview/brand/brand-shapes.html">Brand shapes</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Colors</span>
+          <h4>Core, accents, semantic</h4>
+          <div class="links">
+            <a class="link" href="../preview/colors/colors-core.html">Colors core</a>
+            <a class="link" href="../preview/colors/colors-accents.html">Colors accents</a>
+            <a class="link" href="../preview/colors/colors-semantic.html">Colors semantic</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Typography</span>
+          <h4>Display, headings, body, mono</h4>
+          <div class="links">
+            <a class="link" href="../preview/typography/type-display.html">Type display</a>
+            <a class="link" href="../preview/typography/type-headings.html">Type headings</a>
+            <a class="link" href="../preview/typography/type-body.html">Type body</a>
+            <a class="link" href="../preview/typography/type-mono.html">Type mono</a>
+            <a class="link" href="../preview/typography/type-pairing.html">Type pairing</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Components</span>
+          <h4>Buttons, badges, cards, inputs</h4>
+          <div class="links">
+            <a class="link" href="../preview/components/components-buttons.html">Components buttons</a>
+            <a class="link" href="../preview/components/components-badges.html">Components badges</a>
+            <a class="link" href="../preview/components/components-cards.html">Components cards</a>
+            <a class="link" href="../preview/components/components-inputs.html">Components inputs</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Foundations</span>
+          <h4>Spacing, radii, shadows, composition</h4>
+          <div class="links">
+            <a class="link" href="../preview/foundations/spacing-scale.html">Spacing scale</a>
+            <a class="link" href="../preview/foundations/radii.html">Radii</a>
+            <a class="link" href="../preview/foundations/shadows.html">Shadows</a>
+            <a class="link" href="../preview/foundations/composition-demo.html">Composition demo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="project-pages">
+      <header>
+        <h3>Project HTML</h3>
+        <p>Các trang HTML và artifact quan trọng đã làm trong <code>brand-identity/projects/</code>.</p>
+      </header>
+      <div class="grid-wide">
+        <article class="panel">
+          <span class="meta">2026-04-21</span>
+          <h4>AI khuếch đại cách bạn nghĩ</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-04-21-ai-khuech-dai/design-standalone.html">design-standalone.html</a>
+            <a class="link" href="../projects/2026-04-21-ai-khuech-dai/design.png">design.png</a>
+            <a class="link" href="../projects/2026-04-21-ai-khuech-dai/brief.md">brief.md</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">2026-04-22</span>
+          <h4>20 Kết Nối Với Claude</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-04-22-claude-connectors/design.html">design.html</a>
+            <a class="link" href="../projects/2026-04-22-claude-connectors/design.png">design.png</a>
+            <a class="link" href="../projects/2026-04-22-claude-connectors/iterations/design-v5.png">iteration v5</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">2026-04-24</span>
+          <h4>3 Cấp độ sử dụng Claude Code</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-04-24-3-cap-do-claude-code/design.html">design.html</a>
+            <a class="link" href="../projects/2026-04-24-3-cap-do-claude-code/brief.md">brief.md</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Catalog</span>
+          <h4>Danh sách output đã ghi nhận</h4>
+          <div class="links">
+            <a class="link" href="../projects/catalog.md">projects/catalog.md</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="slides">
+      <header>
+        <h3>Slide Systems</h3>
+        <p>Các deck HTML, demos và bản build tĩnh của workflow slide mà chúng ta đã làm.</p>
+      </header>
+      <div class="grid-wide">
+        <article class="panel">
+          <span class="meta">HTML Slide demos</span>
+          <h4>Flagship demos</h4>
+          <div class="links">
+            <a class="link" href="../HTML%20Slide/demos/ai-engineering-framework-nghienai.html">AI engineering framework</a>
+            <a class="link" href="../HTML%20Slide/demos/how-to-ai-slides-nghienai.html">How to AI slides</a>
+            <a class="link" href="../HTML%20Slide/demos/claude-vs-chatgpt-nghienai.html">Claude vs ChatGPT</a>
+            <a class="link" href="../HTML%20Slide/demos/nghienai-slide-design-study.html">Slide design study</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Benchmark deck</span>
+          <h4>How to start learning AI</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/nghienai-brand-html-ppt/index.html">nghienai-brand-html-ppt</a>
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/html-ppt/index.html">html-ppt baseline</a>
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/frontend-slides/index.html">frontend-slides variant</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Open-slide build</span>
+          <h4>Article figure playground</h4>
+          <div class="links">
+            <a class="link" href="../open-slide-playground/dist/index.html">open-slide-playground dist</a>
+            <a class="link" href="../open-slide-playground/content-engine/WORKFLOW.md">WORKFLOW.md</a>
+            <a class="link" href="../open-slide-playground/content-engine/embedding-la-gi/manifest.json">embedding manifest</a>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="meta">Open-slide decks</span>
+          <h4>Deck workspace build</h4>
+          <div class="links">
+            <a class="link" href="../open-slide-decks/dist/index.html">open-slide-decks dist</a>
+            <a class="link" href="../open-slide-decks/slides/getting-started/index.tsx">getting-started source</a>
+            <a class="link" href="../open-slide-decks/slides/ai-eng-framework/index.tsx">ai-eng-framework source</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="image-output">
+      <header>
+        <h3>Image Output</h3>
+        <p>Các output raster/webp nổi bật từ benchmark deck, article visual lane và website-image experiments.</p>
+      </header>
+      <div class="grid">
+        <article class="thumb">
+          <img class="image-preview" src="../projects/2026-05-04-ai-agency-website-images/01-hero-arrival-field.png" alt="Hero arrival field" />
+          <span class="meta">Website images</span>
+          <h4>AI agency hero set</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-05-04-ai-agency-website-images/01-hero-arrival-field.png">Hero</a>
+            <a class="link" href="../projects/2026-05-04-ai-agency-website-images/05-case-study-wall.png">Case-study wall</a>
+            <a class="link" href="../projects/2026-05-04-ai-agency-website-images/08-closing-cta.png">Closing CTA</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="image-preview" src="../projects/2026-05-09-how-to-start-learning-ai-benchmark/exports/png/nghienai-brand-html-ppt/demo-fix-20260510/slide-01.png" alt="Benchmark deck preview" />
+          <span class="meta">Benchmark deck</span>
+          <h4>Refined slide previews</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/exports/png/nghienai-brand-html-ppt/demo-fix-20260510/slide-01.png">Slide 01</a>
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/exports/png/nghienai-brand-html-ppt/demo-fix-20260510/slide-02.png">Slide 02</a>
+            <a class="link" href="../projects/2026-05-09-how-to-start-learning-ai-benchmark/exports/png/nghienai-brand-html-ppt/demo-fix-20260510/slide-08.png">Slide 08</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="image-preview" src="../open-slide-playground/output/imagegen/embedding-nghienai-v5-infographic.png" alt="Embedding infographic" />
+          <span class="meta">Imagegen lane</span>
+          <h4>Embedding image experiments</h4>
+          <div class="links">
+            <a class="link" href="../open-slide-playground/output/imagegen/embedding-nghienai-v1.png">v1</a>
+            <a class="link" href="../open-slide-playground/output/imagegen/embedding-nghienai-v3-infographic.png">v3 infographic</a>
+            <a class="link" href="../open-slide-playground/output/imagegen/embedding-nghienai-v5-infographic.png">v5 infographic</a>
+          </div>
+        </article>
+        <article class="thumb">
+          <img class="image-preview" src="../projects/2026-05-10-lmsys-radar-nghienai/output/comparison-models-nghienai.png" alt="LMSYS radar" />
+          <span class="meta">Comparison graphic</span>
+          <h4>LMSYS radar NghienAI</h4>
+          <div class="links">
+            <a class="link" href="../projects/2026-05-10-lmsys-radar-nghienai/output/comparison-models-nghienai.png">PNG</a>
+            <a class="link" href="../projects/2026-05-10-lmsys-radar-nghienai/output/comparison-models-nghienai.webp">WebP</a>
+            <a class="link" href="../projects/2026-05-10-lmsys-radar-nghienai/output/comparison-models-nghienai-gptimage2-edit-v1.png">GPT-image edit</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="note">
+      Hub này là lớp điều hướng khôi phục. Nếu bạn muốn, bước tiếp theo mình có thể làm thêm:
+      1. tạo một gallery tự động quét toàn bộ <code>brand-identity/projects/</code>,
+      2. thêm thumbnail cho nhiều file hơn,
+      3. hoặc dựng một route local/app preview đẹp hơn thay vì chỉ là file HTML tĩnh.
+    </div>
+  </main>
+</body>
+</html>
