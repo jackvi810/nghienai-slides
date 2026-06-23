@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentation</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./vendor/d3.v7.min.js"></script>
+  <script src="./vendor/echarts.min.js"></script>
+  <script src="./vendor/gsap.min.js"></script>
+  <script src="./motion.js"></script>
+  <script src="./shortcut-controller.js"></script>
+  <script src="./background-fx.js"></script>
+  <style id="dynamic-design-tokens">
+    :root {
+      --color-paper: #FFFDF6;
+      --color-ink: #2A3140;
+      --color-accent: #FF623B;
+      --color-yellow: #FFE032;
+      --color-muted: #5A6272;
+      --color-bg: #F7F5ED;
+      --font-display: 'Space Grotesk', Helvetica Neue, Helvetica, Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --border-width: 3px;
+      --shadow-offset: 8px;
+      --border-radius: 0px;
+    }
+    .slide-container {
+      display: none;
+      position: absolute;
+      border-radius: var(--border-radius);
+    }
+    .slide-container.is-active {
+      display: block;
+    }
+    
+    .slide-container::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: radial-gradient(var(--color-ink) 25%, transparent 26%);
+      background-size: 8px 8px;
+      z-index: 98;
+    }
+
+  </style>
+</head>
+<body data-background-fx="particles">
+
+  <!-- slide-01-cover.html -->
+  <div class="slide-container is-active" id="slide-01">
+
+    <div class="frame">
+      
+      <!-- Main Title Card (Lemon) -->
+      <div class="card lemon" style="grid-column: 1 / span 8; grid-row: 1 / span 5;">
+        <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 140px; height: auto;">
+        <div class="text-label">NGHIÊN AI · VIDEO 3</div>
+        <h1 class="text-display" style="margin-top: 40px; font-size: 72px; line-height: 1.15;">
+          AI <mark>“ngu”</mark>? Thiết lập<br>Bàn làm việc & Đôi tay<br>thực thi (TOOL)
+        </h1>
+        <div class="text-label" style="text-align: right; margin-top: 20px;">DENSE VISUAL EXPLAINER</div>
+      </div>
+      
+      <!-- Formula Card (Ink) -->
+      <div class="card ink" style="grid-column: 9 / span 4; grid-row: 1 / span 3;">
+        <div class="text-label-sm" style="color: var(--color-lemon);">công thức đầu ra</div>
+        <div class="text-card-h3" style="font-size: 22px; line-height: 1.3; margin-top: 15px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span class="formula-word">MODEL</span>
+          <span class="formula-word">×</span>
+          <span class="formula-word">TOOL</span>
+          <span class="formula-word">×</span>
+          <span class="formula-word">PROMPT</span>
+          <span class="formula-word">×</span>
+          <span class="formula-word">CONTEXT</span>
+          <span class="formula-word">×</span>
+          <span class="formula-word">SKILL</span>
+          <span class="formula-word" style="color: var(--color-yellow); font-weight: bold;">=</span>
+          <span class="formula-word" style="color: var(--color-yellow); font-weight: bold;">OUTPUT</span>
+        </div>
+        <div class="blockmark" style="color: var(--color-lemon); margin-top: 20px; align-self: flex-end;">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      
+      <!-- Description Card (Paper) -->
+      <div class="card" style="grid-column: 1 / span 8; grid-row: 6 / span 3;">
+        <div class="text-label-sm">quan điểm cốt lõi</div>
+        <p class="text-body" style="margin-top: 15px;">
+          AI không phải công cụ. <em>AI là thực tập sinh thụ động</em> với kiến thức khổng lồ. Chất lượng đầu ra phụ thuộc vào hệ thống bạn xây dựng xung quanh nó.
+        </p>
+      </div>
+      
+      <!-- Series Metadata Card (Paper) -->
+      <div class="card" style="grid-column: 9 / span 4; grid-row: 4 / span 5;">
+        <div class="text-label-sm">dossier nội dung</div>
+        <div class="flex-col gap-sm" style="margin-top: 20px;">
+          <div style="border-bottom: 1.5px solid var(--color-ink); padding-bottom: 8px; font-family: var(--font-mono); font-size: 22px;">
+            MODEL (BỘ NÃO) → THỰC TẬP SINH THỤ ĐỘNG
+          </div>
+          <div style="border-bottom: 1.5px solid var(--color-ink); padding-bottom: 8px; font-family: var(--font-mono); font-size: 22px;">
+            TOOL (MÔI TRƯỜNG) → BÀN LÀM VIỆC CỤ CỤC BỘ
+          </div>
+          <div style="border-bottom: 1.5px solid var(--color-ink); padding-bottom: 8px; font-family: var(--font-mono); font-size: 22px;">
+            PROMPT / CONTEXT → HỒ SƠ & GIAO VIỆC
+          </div>
+          <div style="padding-bottom: 8px; font-family: var(--font-mono); font-size: 22px;">
+            SKILL (SOP) → QUY TRÌNH TIÊU CHUẨN
+          </div>
+        </div>
+        <div class="text-label-xs" style="margin-top: auto;">© 2026 NGHIEN.AI</div>
+      </div>
+
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>01 · HOOK</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        slide.initSlideCharts = function() {
+          const words = slide.querySelectorAll('.formula-word');
+          if (words.length > 0) {
+            gsap.killTweensOf(words);
+            gsap.set(words, { opacity: 0, scale: 0.4, y: 15 });
+            gsap.to(words, {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.08,
+              ease: "elastic.out(1.1, 0.6)",
+              delay: 0.3
+            });
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          const words = slide.querySelectorAll('.formula-word');
+          gsap.killTweensOf(words);
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-15-section-tool.html -->
+  <div class="slide-container" id="slide-02">
+
+    <div class="frame">
+      <div class="card ink scanline-grid" style="grid-column: 1 / span 12; grid-row: 1 / span 8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px;">
+        <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 60px; right: 80px; width: 180px; height: auto; z-index: 10;">
+        
+        <div class="text-label" style="color: var(--color-yellow); margin-bottom: 30px; letter-spacing: 0.15em; z-index: 10;">YẾU TỐ SỐ 02 / HỆ THỐNG ĐẦU RA</div>
+        
+        <h2 class="text-title" style="font-size: 81px; line-height: 1.15; color: var(--color-paper); text-transform: uppercase; max-width: 1400px; z-index: 10;">
+          TOOL<br>
+          <span class="typewriter" data-text="(MÔI TRƯỜNG & CÔNG CỤ LÀM VIỆC)" style="font-size: 41px; color: var(--color-yellow); font-family: var(--font-mono); font-weight: 500; min-height: 50px; display: inline-block;"></span>
+        </h2>
+        
+        <div class="blockmark" style="color: var(--color-lemon); margin-top: 50px; z-index: 10;">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>15b · TOOL</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        const el = slide.querySelector('.typewriter');
+        const text = el.getAttribute('data-text');
+        let timer = null;
+
+        slide.initSlideCharts = function() {
+          if (timer) clearInterval(timer);
+          el.textContent = "";
+          let idx = 0;
+          timer = setInterval(() => {
+            if (idx < text.length) {
+              el.textContent += text.charAt(idx);
+              idx++;
+            } else {
+              clearInterval(timer);
+              timer = null;
+            }
+          }, 60);
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+          el.textContent = "";
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-17-chat-app-flaws.html -->
+  <div class="slide-container" id="slide-03">
+
+    <div class="frame">
+      <!-- Card 1: Hộp cát (Ink) -->
+      <div class="card ink" style="grid-column: 1 / span 3; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 100px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">01 · HẠN CHẾ</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 27px; line-height: 1.1; color: var(--color-paper);"><span class="glitch" data-text="HỘP CÁT">HỘP CÁT</span> CÔ LẬP</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 23px; line-height: 1.45; color: var(--color-bg); margin-bottom: 20px;">
+            AI bị khóa trong trình duyệt, <mark>không thể chạm vào máy</mark> của bạn.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 19px; line-height: 1.5; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-coral); padding-left: 12px;">
+              🚫 <strong>Sandbox:</strong> Không biết cấu trúc thư mục local.
+            </li>
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-coral); padding-left: 12px;">
+              ✍️ <strong>Thủ công:</strong> Phải copy-paste từng dòng code hay file văn bản.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">TRÍ TUỆ LIỆT CHI VÌ THIẾU CÔNG CỤ THỰC THI</div>
+      </div>
+      
+      <!-- Card 2: Mất trí nhớ (Pearl) -->
+      <div class="card" style="grid-column: 4 / span 3; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 100px; height: auto;">
+          <div class="text-label-sm">02 · BẤT TIỆN</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 27px; line-height: 1.1;">MẤT TRÍ<br>NHỚ SỐ</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 23px; line-height: 1.45; margin-bottom: 20px;">
+            Bối cảnh công việc <mark>bị xóa sạch</mark> sau mỗi thread chat mới.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 19px; line-height: 1.5; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-ink); padding-left: 12px;">
+              🧠 <strong>Quên bối cảnh:</strong> Phải Onboarding lại quy trình từ đầu cho AI.
+            </li>
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-ink); padding-left: 12px;">
+              📉 <strong>Lãng phí:</strong> Không kế thừa được tri thức từ những phiên làm việc cũ.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs">MỖI PHIÊN CHAT MỚI LÀ MỘT LẦN DẠY LẠI TỪ BẢNG CHỮ CÁI</div>
+      </div>
+      
+      <!-- Card 3: Khóa nhà cung cấp (Yellow) -->
+      <div class="card" style="grid-column: 7 / span 3; grid-row: 1 / span 8; background-color: var(--color-yellow); color: var(--color-ink);">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 100px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">03 · RỦI RO</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 27px; line-height: 1.1;">VENDOR<br>LOCK-IN</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 23px; line-height: 1.45; margin-bottom: 20px;">
+            Dữ liệu và SOPs bị <mark>giam cầm</mark> trên hệ sinh thái của các hãng.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 19px; line-height: 1.5; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-ink); padding-left: 12px;">
+              🔒 <strong>Bị khóa:</strong> Custom GPTs/Projects bị phụ thuộc vào hãng.
+            </li>
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-ink); padding-left: 12px;">
+              ⚙️ <strong>Khó hoán đổi:</strong> Rất mất công nếu muốn đổi sang dòng AI khác.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs">HÃY TỰ CHỦ DATA VỚI TRIẾT LÝ FILE-OVER-APP</div>
+      </div>
+      
+      <!-- Card 4: Làm thuê (Coral) -->
+      <div class="card lemon" style="grid-column: 10 / span 3; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 100px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-yellow);">04 · LỆ THUỘC</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 27px; line-height: 1.1; color: var(--color-paper);">CLOUD &amp;<br>LIMITS</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 23px; line-height: 1.45; color: var(--color-paper); margin-bottom: 20px;">
+            Lệ thuộc máy chủ và <mark>giới hạn credit</mark> ngặt nghèo của cloud.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 19px; line-height: 1.5; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-yellow); padding-left: 12px; color: var(--color-paper);">
+              💳 <strong>Chặn đứng:</strong> Hết credit hoặc rate-limit là dừng việc lập tức.
+            </li>
+            <li style="margin-bottom: 12px; border-left: 3px solid var(--color-yellow); padding-left: 12px; color: var(--color-paper);">
+              🌐 <strong>Mất kết nối:</strong> Server sập hoặc đứt mạng là bạn trắng tay.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-yellow);">GIẢI QUYẾT BẰNG MÔ HÌNH CHẠY LOCAL-FIRST</div>
+      </div>
+    </div>
+    
+    <div class="pagenum"><span class="glow-dot"></span><span>17 · CHAT APP FLAWS</span></div>
+
+    <style>
+      /* Glitch Effect on Card 1 Title */
+      .glitch {
+        position: relative;
+        display: inline-block;
+      }
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-ink);
+        overflow: hidden;
+      }
+      .glitch::before {
+        left: 2.5px;
+        text-shadow: -2px 0 var(--color-coral);
+        clip: rect(10px, 350px, 36px, 0);
+        animation: glitch-anim-1 3.5s infinite linear alternate-reverse;
+      }
+      .glitch::after {
+        left: -2.5px;
+        text-shadow: -2px 0 var(--color-yellow);
+        clip: rect(35px, 350px, 70px, 0);
+        animation: glitch-anim-2 3.5s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch-anim-1 {
+        0%, 90% { clip: rect(0, 0, 0, 0); opacity: 0; }
+        91% { clip: rect(10px, 9999px, 36px, 0); opacity: 1; }
+        93% { clip: rect(32px, 9999px, 5px, 0); }
+        95% { clip: rect(20px, 9999px, 56px, 0); }
+        97% { clip: rect(5px, 9999px, 25px, 0); }
+        100% { clip: rect(0, 0, 0, 0); opacity: 0; }
+      }
+      @keyframes glitch-anim-2 {
+        0%, 90% { clip: rect(0, 0, 0, 0); opacity: 0; }
+        91% { clip: rect(32px, 9999px, 70px, 0); opacity: 1; }
+        93% { clip: rect(5px, 9999px, 45px, 0); }
+        95% { clip: rect(15px, 9999px, 20px, 0); }
+        97% { clip: rect(40px, 9999px, 65px, 0); }
+        100% { clip: rect(0, 0, 0, 0); opacity: 0; }
+      }
+    </style>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        let interval = null;
+        slide.initSlideCharts = function() {
+          const glitchEl = slide.querySelector('.glitch');
+          if (glitchEl) {
+            const originalText = "HỘP CÁT";
+            const chars = "☠☢☣⚙⚡⚲⚠✕🧠💾";
+            let iterations = 0;
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
+              glitchEl.innerText = originalText.split("").map((char, index) => {
+                if (index < iterations) return originalText[index];
+                return chars[Math.floor(Math.random() * chars.length)];
+              }).join("");
+              iterations += 1/3;
+              if (iterations >= originalText.length) {
+                clearInterval(interval);
+                glitchEl.innerText = originalText;
+              }
+            }, 35);
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          if (interval) clearInterval(interval);
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-18-local-environment.html -->
+  <div class="slide-container" id="slide-04">
+
+    <div class="frame">
+      
+      <!-- Left Card: iCloud Sync (Ink) -->
+      <div class="card ink" style="grid-column: 1 / span 7; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 140px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">Môi trường tự chủ</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 35px; line-height: 1.1; color: var(--color-paper);">iCloud Drive Workspace</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 27px; line-height: 1.45; color: var(--color-bg); margin-bottom: 25px;">
+            Biến thư mục local đồng bộ đám mây thành <mark>văn phòng thông minh</mark> vĩnh viễn.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 27px; line-height: 1.6; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-coral); padding-left: 15px;">
+              🔒 <strong>Tự chủ tuyệt đối:</strong> Vault và SOPs nằm trực tiếp trên máy bạn, không lo rò rỉ hay mất mát.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-yellow); padding-left: 15px;">
+              ☁️ <strong>Đồng bộ đám mây:</strong> iCloud Drive tự động đồng bộ, quản lý Agent từ mọi nơi.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-paper); padding-left: 15px;">
+              📝 <strong>Dạng file thuần túy:</strong> Quản lý bằng Markdown trực quan, không phụ thuộc định dạng đóng.
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Brutalist Sync Graphic -->
+        <div class="sync-graphic-container" style="position: absolute; right: 32px; bottom: 80px; width: 160px; height: 160px; border: 3px solid var(--color-paper); background: rgba(0,0,0,0.15); overflow: hidden;">
+          <div class="sync-line" style="position: absolute; left: 50%; top: 15px; bottom: 15px; width: 2px; border-left: 2.5px dashed var(--color-coral); transform: translateX(-50%); opacity: 0.5;"></div>
+          <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); background: var(--color-yellow); border: 2px solid var(--color-ink); padding: 2px 6px; font-family: var(--font-mono); font-size: 14px; font-weight: bold; color: var(--color-ink); z-index: 2; white-space: nowrap;">📁 LOCAL</div>
+          <div style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); background: var(--color-coral); border: 2px solid var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); font-size: 14px; font-weight: bold; color: var(--color-paper); z-index: 2; white-space: nowrap;">☁️ SYNC</div>
+          <div class="sync-file file-1" style="position: absolute; left: calc(50% - 9px); bottom: 38px; width: 22px; height: 26px; background: var(--color-paper); border: 2px solid var(--color-ink); font-size: 14px; line-height: 22px; text-align: center; line-height: 18px; font-weight: bold; z-index: 1;">📄</div>
+          <div class="sync-file file-2" style="position: absolute; left: calc(50% - 9px); bottom: 38px; width: 22px; height: 26px; background: var(--color-paper); border: 2px solid var(--color-ink); font-size: 14px; line-height: 22px; text-align: center; line-height: 18px; font-weight: bold; z-index: 1;">📄</div>
+        </div>
+
+        <div class="text-label-xs" style="color: var(--color-muted);">DỮ LIỆU THUỘC QUYỀN SỞ HỮU CỦA BẠN VĨNH VIỄN</div>
+      </div>
+      
+      <!-- Right Card: Multi-agent (Pearl) -->
+      <div class="card" style="grid-column: 8 / span 5; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 140px; height: auto;">
+          <div class="text-label-sm">Giải pháp linh hoạt</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 35px; line-height: 1.1;">Di Động &amp;<br><span style="color: var(--color-coral);">Linh Hoạt</span></h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.4; margin-bottom: 20px;">
+            Nhiều model nhảy vào làm việc chung trên <mark>cùng thư mục</mark>.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 22px; line-height: 1.6; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 14px; border-left: 3px solid var(--color-ink); padding-left: 12px;">
+              🤝 <strong>Phối hợp chéo:</strong> Claude code, GPT viết tài liệu, DeepSeek tối ưu cùng lúc trên một folder.
+            </li>
+            <li style="margin-bottom: 14px; border-left: 3px solid var(--color-coral); padding-left: 12px;">
+              🔄 <strong>Dễ thay thế:</strong> Hoán đổi não AI linh hoạt mà không làm gián đoạn dòng dữ liệu.
+            </li>
+            <li style="margin-bottom: 14px; border-left: 3px solid var(--color-muted); padding-left: 12px;">
+              ⚡ <strong>Tốc độ vượt trội:</strong> Đọc/ghi trực tiếp trên ổ đĩa, không tốn thời gian upload.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs">MÔ HÌNH HỢP TÁC KHÔNG PHỤ THUỘC VÀO MỘT MODEL CHỦ</div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>18 · LOCAL WORKSPACE</span></div>
+
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        let tl1 = null;
+        let tl2 = null;
+
+        slide.initSlideCharts = function() {
+          const file1 = slide.querySelector('.file-1');
+          const file2 = slide.querySelector('.file-2');
+          
+          if (file1 && file2) {
+            if (tl1) tl1.kill();
+            if (tl2) tl2.kill();
+            gsap.killTweensOf([file1, file2]);
+            
+            gsap.set(file1, { y: 0, opacity: 0, rotation: 0 });
+            gsap.set(file2, { y: 0, opacity: 0, rotation: 0 });
+            
+            tl1 = gsap.timeline({ repeat: -1 });
+            tl1.fromTo(file1, 
+              { y: 0, opacity: 0, rotation: 0 }, 
+              { y: -80, opacity: 1, rotation: 15, duration: 2.0, ease: "power1.inOut" }
+            ).to(file1, { opacity: 0, duration: 0.3 }, "-=0.3");
+            
+            tl2 = gsap.timeline({ repeat: -1, delay: 1.0 });
+            tl2.fromTo(file2, 
+              { y: 0, opacity: 0, rotation: 0 }, 
+              { y: -80, opacity: 1, rotation: -15, duration: 2.0, ease: "power1.inOut" }
+            ).to(file2, { opacity: 0, duration: 0.3 }, "-=0.3");
+          }
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (tl1) tl1.kill();
+          if (tl2) tl2.kill();
+          const file1 = slide.querySelector('.file-1');
+          const file2 = slide.querySelector('.file-2');
+          if (file1 && file2) {
+            gsap.killTweensOf([file1, file2]);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-19-file-over-app.html -->
+  <div class="slide-container" id="slide-05">
+
+    <div class="frame">
+      
+      <!-- Large Display Card (Lemon / Coral) -->
+      <div class="card lemon" style="grid-column: 1 / span 12; grid-row: 1 / span 8; padding: 60px 80px; justify-content: space-between;">
+        
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div class="text-label" style="color: var(--color-paper); font-size: 29px; font-weight: 700; letter-spacing: 0.1em;">
+            💡 triết lý tài sản thông tin
+          </div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="width: 180px; height: auto;">
+        </div>
+
+        <!-- Big Display Text -->
+        <div style="margin: auto 0; max-width: 1600px;">
+          <h1 style="font-family: var(--font-display); font-size: 61px; line-height: 1.25; font-weight: 700; color: var(--color-paper); text-transform: uppercase;">
+            Triết lý <mark>File-Over-App</mark>:<br>
+            Dữ liệu của bạn là duy nhất, di động và vĩnh viễn.<br>
+            Model AI chỉ là <em>thực tập sinh</em> đến rồi đi.
+          </h1>
+        </div>
+
+        <!-- Models Dissolve Visual -->
+        <div class="models-dissolve-container" style="display: flex; gap: 30px; margin: 30px 0; justify-content: flex-start; align-items: center; width: 100%;">
+          <div class="file-icon" style="background: var(--color-yellow); border: 4px solid var(--color-ink); color: var(--color-ink); padding: 18px 36px; font-family: var(--font-mono); font-size: 29px; font-weight: bold; box-shadow: 6px 6px 0 var(--color-ink);">📂 LOCAL VAULT (.MD)</div>
+          <div class="sync-arrow" style="font-size: 37px; color: var(--color-paper); font-weight: bold; margin: 0 10px;">⬅</div>
+          <div style="display: flex; gap: 15px;">
+            <div class="model-badge badge-claude" style="background: var(--color-ink); border: 3px solid var(--color-paper); color: var(--color-paper); padding: 12px 24px; font-family: var(--font-mono); font-size: 22px; font-weight: bold; border-radius: 0;">❌ CLAUDE APP</div>
+            <div class="model-badge badge-gpt" style="background: var(--color-ink); border: 3px solid var(--color-paper); color: var(--color-paper); padding: 12px 24px; font-family: var(--font-mono); font-size: 22px; font-weight: bold; border-radius: 0;">❌ CHATGPT APP</div>
+            <div class="model-badge badge-ds" style="background: var(--color-ink); border: 3px solid var(--color-paper); color: var(--color-paper); padding: 12px 24px; font-family: var(--font-mono); font-size: 22px; font-weight: bold; border-radius: 0;">❌ DEEPSEEK APP</div>
+          </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div style="display: flex; justify-content: space-between; border-top: 2px solid rgba(255, 255, 255, 0.3); padding-top: 20px; width: 100%;">
+          <div style="font-family: var(--font-mono); font-size: 27px; color: var(--color-yellow); text-transform: uppercase;">
+            [ TỔNG THỂ TÀI SẢN SỐ ] &gt;&gt; ĐỘC LẬP VỚI CÔNG NGHỆ NHÀ CUNG CẤP
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 27px; color: var(--color-paper); opacity: 0.8;">
+            NGHIÊN AI © 2026
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+    <div class="pagenum lemon"><span class="glow-dot"></span><span>19 · FILE-OVER-APP</span></div>
+
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        let tl = null;
+
+        slide.initSlideCharts = function() {
+          const fileEl = slide.querySelector('.file-icon');
+          const arrowEl = slide.querySelector('.sync-arrow');
+          const badges = slide.querySelectorAll('.model-badge');
+
+          if (fileEl && badges.length > 0) {
+            if (tl) tl.kill();
+            gsap.killTweensOf([fileEl, arrowEl, badges]);
+
+            // Initial state
+            gsap.set(fileEl, { opacity: 0, scale: 0.7, x: -30 });
+            gsap.set(arrowEl, { opacity: 0 });
+            gsap.set(badges, { opacity: 1, y: 0 });
+
+            tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+            tl.to(fileEl, { opacity: 1, scale: 1, x: 0, duration: 0.6, ease: "back.out(1.7)" })
+              .to(arrowEl, { opacity: 1, duration: 0.3 })
+              .to(badges, {
+                opacity: 0,
+                y: 30,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: "power2.in",
+                delay: 1.0
+              });
+          }
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (tl) tl.kill();
+          const fileEl = slide.querySelector('.file-icon');
+          const badges = slide.querySelectorAll('.model-badge');
+          if (fileEl && badges.length > 0) {
+            gsap.killTweensOf([fileEl, badges]);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-22-four-tier-stack.html -->
+  <div class="slide-container" id="slide-06">
+
+    <div class="frame">
+      
+      <!-- Left Panel: Title & Description -->
+      <div class="card ink" style="grid-column: 1 / span 4; grid-row: 1 / span 8; justify-content: space-between;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 120px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">Phân tầng ứng dụng</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 33px; line-height: 1.1; color: var(--color-paper);">Tháp công nghệ<br><span style="color: var(--color-yellow);">AI 4 TẦNG</span></h2>
+        </div>
+        
+        <div style="margin: 25px 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.45; color: var(--color-bg);">
+            Định vị bản thân trên thị trường và biết cách lựa chọn công cụ phù hợp với từng tác vụ.
+          </p>
+          <div style="margin-top: 20px; border-left: 3px dashed var(--color-yellow); padding-left: 15px; font-family: var(--font-mono); font-size: 16px; color: var(--color-yellow);">
+            Vibe Coding: Điều khiển local, deploy trực tiếp bằng ngôn ngữ tự nhiên.
+          </div>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">NGHIÊN AI © 2026</div>
+      </div>
+      
+      <!-- Right Panel: Stack (Vertical Bento) -->
+      <!-- Tầng 4: End-User Apps -->
+      <div class="card tier-card" style="grid-column: 5 / span 8; grid-row: 1 / span 2; padding: 16px 24px; border-left: 5px solid var(--color-ink);">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-ink); color: var(--color-paper); font-family: var(--font-mono); font-weight: bold; font-size: 16px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">4</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase;">Tầng 4: Ứng dụng Chuyên biệt (End-User App)</h3>
+              <p style="font-family: var(--font-mono); font-size: 16px; color: var(--color-muted); margin-top: 2px;"> Runway (video), ElevenLabs (giọng nói), Granola (ghi âm cuộc họp)</p>
+            </div>
+          </div>
+          <div class="pill-no" style="font-size: 14px; padding: 4px 10px;">COMPUTER USE</div>
+        </div>
+      </div>
+      
+      <!-- Tầng 3: No-code App Builders -->
+      <div class="card tier-card" style="grid-column: 5 / span 8; grid-row: 3 / span 2; padding: 16px 24px; border-left: 5px solid var(--color-coral);">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-coral); color: var(--color-paper); font-family: var(--font-mono); font-weight: bold; font-size: 16px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">3</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase;">Tầng 3: Xây dựng Không Code (No-code Builders)</h3>
+              <p style="font-family: var(--font-mono); font-size: 16px; color: var(--color-muted); margin-top: 2px;">Vibecode, Flutterflow, Bubble</p>
+            </div>
+          </div>
+          <div class="pill-part" style="font-size: 14px; padding: 4px 10px; border-color: var(--color-coral); color: var(--color-coral);">APP ENGINE</div>
+        </div>
+      </div>
+      
+      <!-- Tầng 2: Cloud IDEs & Playgrounds -->
+      <div class="card tier-card" style="grid-column: 5 / span 8; grid-row: 5 / span 2; padding: 16px 24px; border-left: 5px solid var(--color-yellow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-yellow); color: var(--color-ink); font-family: var(--font-mono); font-weight: bold; font-size: 16px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">2</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase;">Tầng 2: Sân chơi Cloud (Cloud IDEs &amp; Playgrounds)</h3>
+              <p style="font-family: var(--font-mono); font-size: 16px; color: var(--color-muted); margin-top: 2px;">Replit Agent, Bolt.new, Lovable.dev, v0.dev</p>
+            </div>
+          </div>
+          <div class="pill-yes" style="font-size: 14px; padding: 4px 10px;">PROTOTYPE</div>
+        </div>
+      </div>
+      
+      <!-- Tầng 1: Client & Local Execution -->
+      <div class="card tier-card ink" style="grid-column: 5 / span 8; grid-row: 7 / span 2; padding: 16px 24px; border-left: 5px solid var(--color-yellow); background-color: var(--color-ink); color: var(--color-paper);">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-yellow); color: var(--color-ink); font-family: var(--font-mono); font-weight: bold; font-size: 16px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">1</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase; color: var(--color-paper);">Tầng 1: Thực thi Cục bộ (Local &amp; Client Execution)</h3>
+              <p style="font-family: var(--font-mono); font-size: 16px; color: var(--color-yellow); margin-top: 2px;">Cursor IDE, Claude Code (CLI), Antigravity CLI</p>
+            </div>
+          </div>
+          <div class="pill-yes" style="font-size: 14px; padding: 4px 10px; background-color: var(--color-yellow); color: var(--color-ink);">LOCAL-FIRST</div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>22 · 4-TIER STACK</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        slide.initSlideCharts = function() {
+          const cards = slide.querySelectorAll('.tier-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+            gsap.set(cards, { opacity: 0, x: 50 });
+            gsap.to(cards, {
+              opacity: 1,
+              x: 0,
+              duration: 0.6,
+              stagger: 0.12,
+              ease: "back.out(1.2)"
+            });
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          const cards = slide.querySelectorAll('.tier-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-16-tool-types.html -->
+  <div class="slide-container" id="slide-07">
+
+    <div class="frame">
+      
+      <!-- Left Card (Control Interface - Ink) -->
+      <div class="card ink" style="grid-column: 1 / span 6; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 140px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">01 · Cổng chỉ huy</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 35px; line-height: 1.1; color: var(--color-paper);">Interface Điều khiển<br><span style="color: var(--color-yellow);">Control Interfaces</span></h2>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p class="text-body-sm" style="font-size: 27px; line-height: 1.45; color: var(--color-bg);">
+            Nơi con người <mark>ra lệnh, gõ prompt và duyệt code</mark> trực tiếp cho AI.
+          </p>
+          <ul style="margin-top: 25px; font-family: var(--font-mono); font-size: 25px; line-height: 1.6; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-coral); padding-left: 15px;">
+              <strong style="color: var(--color-paper); font-size: 22px;">💻 Cursor &amp; VS Code:</strong><br>
+              Viết code, soạn tài liệu, chỉnh sửa file trong Workspace cục bộ.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-yellow); padding-left: 15px;">
+              <strong style="color: var(--color-yellow); font-size: 22px;">⌨️ Claude Code (CLI):</strong><br>
+              Giao diện dòng lệnh Terminal trực quan, cài thư viện và deploy nhanh.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">GIAO DIỆN CON NGƯỜI ĐIỀU HÀNH VÀ KIỂM SOÁT HÀNH ĐỘNG CỦA AI</div>
+      </div>
+      
+      <!-- Right Card (Data Connectors - Pearl) -->
+      <div class="card" style="grid-column: 7 / span 6; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 140px; height: auto;">
+          <div class="text-label-sm">02 · Đôi bàn tay kết nối</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 35px; line-height: 1.1;">Connector Dữ liệu<br><span style="color: var(--color-coral);">Data Connectors (MCP)</span></h2>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p class="text-body-sm" style="font-size: 27px; line-height: 1.45;">
+            Cánh tay cắm qua MCP để AI <mark>truy cập dữ liệu ngoại vi</mark> thời gian thực.
+          </p>
+          <ul style="margin-top: 25px; font-family: var(--font-mono); font-size: 25px; line-height: 1.6; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-ink); padding-left: 15px;">
+              <strong style="font-size: 22px;">🔌 Notion &amp; Drive MCP:</strong><br>
+              Tự động đọc/ghi tài liệu SOPs, kéo thông tin tài sản tri thức.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 4px solid var(--color-coral); padding-left: 15px;">
+              <strong style="font-size: 22px;">💾 DB &amp; Slack MCP:</strong><br>
+              Truy vấn SQLite/Postgres cục bộ, gửi thông báo báo cáo tiến độ.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-label-xs">RANH GIỚI CON NGƯỜI: Ý ĐỒ CHIẾN LƯỢC · TASTE/GU · AN TOÀN &amp; PHÁP LÝ</div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>16 · TOOLS</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        slide.initSlideCharts = function() {
+          const leftCard = slide.querySelector('.card.ink');
+          const rightCard = slide.querySelector('.card:not(.ink)');
+          if (leftCard && rightCard) {
+            gsap.killTweensOf([leftCard, rightCard]);
+            gsap.set(leftCard, { opacity: 0, x: -100, y: 0 });
+            gsap.set(rightCard, { opacity: 0, x: 100, y: 0 });
+            gsap.to(leftCard, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" });
+            gsap.to(rightCard, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out", delay: 0.15 });
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          const leftCard = slide.querySelector('.card.ink');
+          const rightCard = slide.querySelector('.card:not(.ink)');
+          if (leftCard && rightCard) {
+            gsap.killTweensOf([leftCard, rightCard]);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-20-mcp-protocol.html -->
+  <div class="slide-container" id="slide-08">
+
+    <div class="frame">
+      
+      <!-- One Large Card (Pearl) -->
+      <div class="card" style="grid-column: 1 / span 12; grid-row: 1 / span 8; padding: 48px; display: flex; flex-direction: column; justify-content: space-between;">
+        
+        <!-- Header -->
+        <div style="position: relative;">
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 0; right: 0; width: 140px; height: auto;">
+          <div class="text-label-sm">giao thức bối cảnh model</div>
+          <h2 class="text-subtitle" style="margin-top: 15px; font-size: 37px; line-height: 1.1;">Model Context Protocol (MCP)</h2>
+          <p style="font-family: var(--font-mono); font-size: 22px; color: var(--color-muted); margin-top: 8px;">
+            Tiêu chuẩn mã nguồn mở kết nối bảo mật bộ não AI với các tài nguyên dữ liệu thực tế.
+          </p>
+        </div>
+
+        <!-- D3 Diagram Container -->
+        <div class="d3-mcp-diagram" style="margin: auto 0; position: relative; width: 100%; height: 500px; border: 2.5px solid var(--color-ink); background-color: var(--color-paper); box-shadow: 6px 6px 0 var(--color-ink); overflow: hidden;">
+          <svg class="d3-mcp-svg" width="100%" height="100%" viewBox="0 0 900 500" style="display: block;"></svg>
+          <div class="mcp-action-label" style="position: absolute; left: 20px; top: 15px; font-size: 16px; font-weight: 700; color: var(--color-coral); font-family: var(--font-mono); z-index: 5;">SYSTEM ACTIVE</div>
+        </div>
+
+        <!-- Footnote -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--color-ink); padding-top: 15px; margin-top: 15px;">
+          <div class="text-label-xs">MCP hoạt động như THẺ THÔNG HÀNH - chỉ cấp quyền đọc/ghi dữ liệu khi người dùng phê duyệt.</div>
+          <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--color-coral);">SECURE DATA TRANSIT</div>
+        </div>
+
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>20 · MCP PROTOCOL</span></div>
+    
+    <style>
+      .d3-mcp-svg .link {
+        fill: none;
+        stroke: var(--color-ink);
+        stroke-width: 3.5;
+        transition: stroke-width 0.3s;
+      }
+      .d3-mcp-svg .link.active {
+        stroke-width: 6;
+      }
+      .d3-mcp-svg .link-flow {
+        fill: none;
+        stroke: var(--color-coral);
+        stroke-width: 4.5;
+        stroke-dasharray: 10 20;
+        stroke-dashoffset: 0;
+        animation: d3-mcp-flow-animation 1s linear infinite;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .d3-mcp-svg .link-flow.active {
+        opacity: 1;
+      }
+      @keyframes d3-mcp-flow-animation {
+        to {
+          stroke-dashoffset: -30;
+        }
+      }
+
+      /* Node style */
+      .d3-mcp-svg .node-group rect.shadow-box {
+        fill: var(--color-ink);
+        stroke: none;
+        transform: translate(6px, 6px);
+      }
+      .d3-mcp-svg .node-group rect.main-box {
+        fill: var(--color-paper);
+        stroke: var(--color-ink);
+        stroke-width: 2.5;
+        transition: fill 0.3s, transform 0.2s;
+        cursor: pointer;
+      }
+      .d3-mcp-svg .node-group.client rect.main-box {
+        fill: var(--color-ink);
+        stroke: var(--color-ink);
+      }
+      .d3-mcp-svg .node-group.server rect.main-box {
+        fill: var(--color-yellow);
+        stroke: var(--color-ink);
+      }
+      
+      .d3-mcp-svg .node-group.resource.active rect.main-box {
+        fill: var(--color-yellow);
+        transform: translate(-2px, -2px);
+      }
+
+      /* Hover zoom effect */
+      .d3-mcp-svg .node-group:hover rect.main-box {
+        transform: translate(-3px, -3px);
+      }
+    </style>
+
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        const indicator = slide.querySelector('.mcp-action-label');
+        const svgEl = slide.querySelector('.d3-mcp-svg');
+        
+        let simulation = null;
+        let loopInterval = null;
+        let activeIdx = 0;
+
+        slide.initSlideCharts = function() {
+          if (loopInterval) clearInterval(loopInterval);
+          if (simulation) simulation.stop();
+
+          // Fresh data copies to prevent D3 mutation issues across initializations
+          const currentNodes = [
+            { id: "llm", x: 150, y: 250, fx: 150, fy: 250, label: "LLM Model", type: "client", desc: "CLIENT / CURSOR" },
+            { id: "mcp", x: 450, y: 250, fx: 450, fy: 250, label: "MCP Server", type: "server", desc: "BRIDGE / ROUTER" },
+            { id: "notion", x: 720, y: 100, label: "Notion API", type: "resource" },
+            { id: "db", x: 720, y: 200, label: "Databases", type: "resource" },
+            { id: "local", x: 720, y: 300, label: "Local Files", type: "resource" },
+            { id: "search", x: 720, y: 400, label: "Web Search", type: "resource" }
+          ];
+
+          const currentLinks = [
+            { source: "llm", target: "mcp", id: "llm-mcp" },
+            { source: "mcp", target: "notion", id: "mcp-notion" },
+            { source: "mcp", target: "db", id: "mcp-db" },
+            { source: "mcp", target: "local", id: "mcp-local" },
+            { source: "mcp", target: "search", id: "mcp-search" }
+          ];
+
+          let svg = d3.select(svgEl);
+          svg.selectAll("*").remove();
+
+          // Draw links (underneath nodes)
+          const linkPaths = svg.append("g")
+            .selectAll(".link")
+            .data(currentLinks)
+            .join("line")
+            .attr("class", "link");
+
+          // Draw link flows (overlay)
+          const linkFlows = svg.append("g")
+            .selectAll(".link-flow")
+            .data(currentLinks)
+            .join("line")
+            .attr("class", "link-flow");
+
+          // Draw node groups
+          const nodeG = svg.append("g")
+            .selectAll(".node-group")
+            .data(currentNodes)
+            .join("g")
+            .attr("class", d => `node-group ${d.type}`);
+
+          // Render Client & Server Node Boxes (wider)
+          const wideG = nodeG.filter(d => d.type === "client" || d.type === "server");
+          wideG.append("rect")
+            .attr("class", "shadow-box")
+            .attr("x", -90)
+            .attr("y", -35)
+            .attr("width", 180)
+            .attr("height", 70);
+          wideG.append("rect")
+            .attr("class", "main-box")
+            .attr("x", -90)
+            .attr("y", -35)
+            .attr("width", 180)
+            .attr("height", 70);
+          wideG.append("text")
+            .attr("y", -8)
+            .attr("text-anchor", "middle")
+            .attr("fill", d => d.type === "client" ? "var(--color-yellow)" : "var(--color-ink)")
+            .attr("font-size", "14px")
+            .attr("font-family", "var(--font-mono)")
+            .attr("font-weight", "bold")
+            .text(d => d.desc);
+          wideG.append("text")
+            .attr("y", 18)
+            .attr("text-anchor", "middle")
+            .attr("fill", d => d.type === "client" ? "var(--color-paper)" : "var(--color-ink)")
+            .attr("font-size", "22px")
+            .attr("font-weight", "bold")
+            .attr("font-family", "var(--font-display)")
+            .text(d => d.label);
+
+          // Render Resource Spokes (smaller)
+          const resourceG = nodeG.filter(d => d.type === "resource");
+          resourceG.append("rect")
+            .attr("class", "shadow-box")
+            .attr("x", -70)
+            .attr("y", -22)
+            .attr("width", 140)
+            .attr("height", 44);
+          resourceG.append("rect")
+            .attr("class", "main-box")
+            .attr("x", -70)
+            .attr("y", -22)
+            .attr("width", 140)
+            .attr("height", 44);
+          resourceG.append("text")
+            .attr("y", 5)
+            .attr("text-anchor", "middle")
+            .attr("fill", "var(--color-ink)")
+            .attr("font-size", "18px")
+            .attr("font-weight", "bold")
+            .attr("font-family", "var(--font-mono)")
+            .text(d => d.label);
+
+          // Node Drag Behavior
+          resourceG.call(d3.drag()
+            .on("start", (event, d) => {
+              if (!event.active) simulation.alphaTarget(0.3).restart();
+              d.fx = d.x;
+              d.fy = d.y;
+            })
+            .on("drag", (event, d) => {
+              // Clamp drag boundary inside right-side region
+              d.fx = Math.max(500, Math.min(850, event.x));
+              d.fy = Math.max(30, Math.min(470, event.y));
+            })
+            .on("end", (event, d) => {
+              if (!event.active) simulation.alphaTarget(0);
+              d.fx = null;
+              d.fy = null;
+              
+              // Trigger manual packet query on drop
+              triggerTraffic(d.id);
+            })
+          );
+
+          // Simulation Setup
+          simulation = d3.forceSimulation(currentNodes)
+            .force("link", d3.forceLink(currentLinks).id(d => d.id).distance(220).strength(0.06))
+            .force("charge", d3.forceManyBody().strength(-150))
+            .force("x", d3.forceX().x(d => {
+              if (d.id === "notion") return 700;
+              if (d.id === "db") return 740;
+              if (d.id === "local") return 740;
+              if (d.id === "search") return 700;
+              return d.x;
+            }).strength(0.18))
+            .force("y", d3.forceY().y(d => {
+              if (d.id === "notion") return 100;
+              if (d.id === "db") return 200;
+              if (d.id === "local") return 300;
+              if (d.id === "search") return 400;
+              return d.y;
+            }).strength(0.18))
+            .force("collide", d3.forceCollide().radius(50))
+            .on("tick", () => {
+              // Draw straight connections
+              linkPaths
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+              linkFlows
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+              nodeG.attr("transform", d => `translate(${d.x}, ${d.y})`);
+            });
+
+          const resourceIds = ["notion", "db", "local", "search"];
+          const actionLabels = {
+            "notion": "Reading content specifications in Notion API...",
+            "db": "Querying SQLite vector database records...",
+            "local": "Reading markdown business SOP files local...",
+            "search": "Fetching Brave API search live parameters..."
+          };
+
+          function triggerTraffic(targetId) {
+            // Set flow and links active
+            linkPaths.classed("active", d => d.target.id === targetId || d.target.id === "mcp");
+            linkFlows.classed("active", d => d.target.id === targetId || d.target.id === "mcp");
+
+            // Update node active classes
+            nodeG.classed("active", d => d.id === targetId);
+
+            // Update action label
+            indicator.textContent = `> ${actionLabels[targetId] || "MCP ROUTER ACTIVE"}`;
+          }
+
+          function loopCycle() {
+            const currentId = resourceIds[activeIdx];
+            triggerTraffic(currentId);
+            activeIdx = (activeIdx + 1) % resourceIds.length;
+          }
+
+          // Setup manual click selection
+          resourceG.on("click", function(event, d) {
+            clearInterval(loopInterval);
+            triggerTraffic(d.id);
+            // Restart loop after 4s
+            loopInterval = setInterval(loopCycle, 3200);
+          });
+
+          // Run loop
+          activeIdx = 0;
+          loopCycle();
+          loopInterval = setInterval(loopCycle, 3200);
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (loopInterval) {
+            clearInterval(loopInterval);
+            loopInterval = null;
+          }
+          if (simulation) {
+            simulation.stop();
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-21-context7.html -->
+  <div class="slide-container" id="slide-09">
+
+    <div class="frame">
+      
+      <!-- Left Card: Context7 Description (Ink) -->
+      <div class="card ink" style="grid-column: 1 / span 5; grid-row: 1 / span 8;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 130px; height: auto;">
+          <div class="text-label-sm" style="color: var(--color-muted);">Giải pháp triệt tiêu ảo giác</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 35px; line-height: 1.1; color: var(--color-paper);">Context7 Tool</h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.45; color: var(--color-bg); margin-bottom: 25px;">
+            Kết nối tài liệu API chính thống theo <mark>thời gian thực</mark> để ngăn chặn code lỗi thời.
+          </p>
+          <ul style="font-family: var(--font-mono); font-size: 22px; line-height: 1.6; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 16px; border-left: 3px solid var(--color-coral); padding-left: 12px;">
+              ⚠️ <strong>Cắt đứt ảo giác:</strong> AI bị lỗi thời do dữ liệu tĩnh, dễ tự bịa tham số không tồn tại.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 3px solid var(--color-yellow); padding-left: 12px;">
+              🌐 <strong>Tra cứu trực tiếp:</strong> Context7 tự cào tài liệu gốc (API docs) chính thức cung cấp cho model.
+            </li>
+            <li style="margin-bottom: 16px; border-left: 3px solid var(--color-paper); padding-left: 12px;">
+              🛡️ <strong>Chính xác tuyệt đối:</strong> Viết code chạy được ngay lập tức, không tốn thời gian debug mò.
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Brutalist Radar Scanner -->
+        <div class="radar-container" style="position: absolute; right: 32px; bottom: 85px; width: 140px; height: 140px; border: 2.5px solid var(--color-paper); border-radius: 50%; background: rgba(0,0,0,0.25); overflow: hidden;">
+          <div style="position: absolute; inset: 20px; border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 50%;"></div>
+          <div style="position: absolute; inset: 45px; border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 50%;"></div>
+          <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: rgba(255,255,255,0.15); transform: translateX(-50%);"></div>
+          <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1.5px; background: rgba(255,255,255,0.15); transform: translateY(-50%);"></div>
+          <div class="radar-sweep" style="position: absolute; left: 50%; top: 50%; width: 100px; height: 100px; background: conic-gradient(from 0deg, var(--color-yellow) 0deg, transparent 45deg); transform-origin: 0% 0%; opacity: 0.6; mix-blend-mode: screen;"></div>
+          <div class="radar-target" style="position: absolute; left: calc(50% - 12px); top: calc(50% - 14px); font-size: 29px; z-index: 2;">📄</div>
+        </div>
+
+        <div class="text-label-xs" style="color: var(--color-muted);">LẤY TÀI LIỆU API CHUẨN TRƯỚC KHI YÊU CẦU AI VIẾT CODE</div>
+      </div>
+      
+      <!-- Right Card: Flow (Pearl) -->
+      <div class="card" style="grid-column: 6 / span 7; grid-row: 1 / span 8; padding: 40px 48px;">
+        <div>
+          <img src="../assets/logo/NghienAI_logo_orangetext.svg" alt="Nghiên AI" style="position: absolute; top: 28px; right: 32px; width: 130px; height: auto;">
+          <div class="text-label-sm">Sơ đồ vận hành</div>
+          <h2 class="text-subtitle" style="margin-top: 20px; font-size: 35px; line-height: 1.1;">Quy Trình Cấp Context API</h2>
+        </div>
+        
+        <div class="flex-col gap-sm" style="margin: auto 0; font-family: var(--font-mono);">
+          
+          <!-- Step 1 -->
+          <div style="border: 2px solid var(--color-ink); padding: 12px 18px; background-color: var(--color-paper); box-shadow: 4px 4px 0 var(--color-ink); display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-ink); color: var(--color-paper); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 27px;">1</div>
+            <div>
+              <div style="font-weight: 700; font-size: 27px;">YÊU CẦU CODE + THƯ VIỆN</div>
+              <div style="font-size: 17px; color: var(--color-muted); margin-top: 2px;">User nhập yêu cầu: e.g., 'Dùng thư viện @google/genai v0.5.0'</div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align: center; color: var(--color-coral); font-size: 29px; font-weight: bold; line-height: 1; margin: 2px 0;">↓</div>
+          
+          <!-- Step 2 -->
+          <div style="border: 2px solid var(--color-ink); padding: 12px 18px; background-color: var(--color-yellow); box-shadow: 4px 4px 0 var(--color-ink); display: flex; align-items: center; gap: 15px; color: var(--color-ink);">
+            <div style="background-color: var(--color-ink); color: var(--color-paper); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 27px;">2</div>
+            <div>
+              <div style="font-weight: 700; font-size: 27px;">TRA CỨU TÀI LIỆU GỐC (CONTEXT7)</div>
+              <div style="font-size: 17px; color: var(--color-ink); opacity: 0.8; margin-top: 2px;">Cào tài liệu API chính thức và nén bối cảnh theo cấu trúc chuẩn</div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align: center; color: var(--color-coral); font-size: 29px; font-weight: bold; line-height: 1; margin: 2px 0;">↓</div>
+          
+          <!-- Step 3 -->
+          <div style="border: 2px solid var(--color-ink); padding: 12px 18px; background-color: var(--color-paper); box-shadow: 4px 4px 0 var(--color-ink); display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-ink); color: var(--color-paper); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 27px;">3</div>
+            <div>
+              <div style="font-weight: 700; font-size: 27px;">BƠM BỐI CẢNH VÀO CỬA SỔ NGỮ CẢNH</div>
+              <div style="font-size: 17px; color: var(--color-muted); margin-top: 2px;">Nạp API specs mới nhất làm bối cảnh cho AI</div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align: center; color: var(--color-coral); font-size: 29px; font-weight: bold; line-height: 1; margin: 2px 0;">↓</div>
+          
+          <!-- Step 4 -->
+          <div style="border: 2px solid var(--color-ink); padding: 12px 18px; background-color: var(--color-ink); color: var(--color-paper); box-shadow: 4px 4px 0 var(--color-coral); display: flex; align-items: center; gap: 15px;">
+            <div style="background-color: var(--color-yellow); color: var(--color-ink); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 27px;">4</div>
+            <div>
+              <div style="font-weight: 700; font-size: 27px; color: var(--color-yellow);">OUTPUT CODE CHẠY ĐƯỢC NGAY</div>
+              <div style="font-size: 17px; color: var(--color-bg); opacity: 0.8; margin-top: 2px;">Mã nguồn chính xác, không dính lỗi phiên bản cũ</div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">CODE CHẠY NGAY KHÔNG CẦN CHỈNH SỬA PHIÊN BẢN HÀM THỦ CÔNG</div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>21 · CONTEXT7</span></div>
+
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        let rotateTween = null;
+        let pulseTween = null;
+
+        slide.initSlideCharts = function() {
+          const sweep = slide.querySelector('.radar-sweep');
+          const target = slide.querySelector('.radar-target');
+          if (sweep && target) {
+            if (rotateTween) rotateTween.kill();
+            if (pulseTween) pulseTween.kill();
+            gsap.killTweensOf([sweep, target]);
+            
+            gsap.set(sweep, { rotation: 0 });
+            rotateTween = gsap.to(sweep, {
+              rotation: 360,
+              duration: 2.2,
+              repeat: -1,
+              ease: "none"
+            });
+
+            pulseTween = gsap.to(target, {
+              scale: 1.25,
+              opacity: 0.85,
+              duration: 0.5,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut"
+            });
+          }
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (rotateTween) rotateTween.kill();
+          if (pulseTween) pulseTween.kill();
+          const sweep = slide.querySelector('.radar-sweep');
+          const target = slide.querySelector('.radar-target');
+          if (sweep && target) {
+            gsap.killTweensOf([sweep, target]);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-23-human-boundaries.html -->
+  <div class="slide-container" id="slide-10">
+
+    <!-- Header title -->
+    <div style="position: absolute; top: 40px; left: 40px; right: 40px; display: flex; justify-content: space-between; align-items: center; z-index: 10;">
+      <div class="text-label" style="color: var(--color-coral); font-weight: 700;">⚖️ ranh giới bất khả xâm phạm</div>
+      <h2 class="text-subtitle" style="font-size: 32px; color: var(--color-ink); text-align: right; text-transform: uppercase;">4 thứ AI không thể thay thế con người</h2>
+    </div>
+
+    <div class="frame" style="inset: 120px 40px 60px 40px; grid-template-rows: repeat(2, 1fr);">
+      
+      <!-- Card 1: Strategic Intent (Ink) -->
+      <div class="card boundary-card ink" style="grid-column: 1 / span 6; grid-row: 1; border-top: 5px solid var(--color-coral); padding: 24px 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+          <div class="text-label-sm" style="color: var(--color-yellow);">01 · Ý ĐỒ CHIẾN LƯỢC</div>
+          <span style="font-size: 28px;">🎯</span>
+        </div>
+        <div style="margin-top: 15px;">
+          <h3 class="text-card-headline" style="color: var(--color-paper); font-size: 27px; line-height: 1.1; margin-bottom: 10px;">Strategic Intent</h3>
+          <p class="text-body-sm" style="font-size: 21px; line-height: 1.45; color: var(--color-bg);">
+            AI có thể đề xuất 10 kế hoạch marketing hay code 10 phương án trong 5 giây. Nhưng chọn phương án nào để <mark>phục vụ đúng mục tiêu dài hạn</mark> là quyết định của con người.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Card 2: Taste (Pearl) -->
+      <div class="card boundary-card" style="grid-column: 7 / span 6; grid-row: 1; border-top: 5px solid var(--color-yellow); padding: 24px 30px; background-color: var(--color-paper);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+          <div class="text-label-sm" style="color: var(--color-coral);">02 · KHẨU VỊ THẨM MỸ</div>
+          <span style="font-size: 28px;">🎨</span>
+        </div>
+        <div style="margin-top: 15px;">
+          <h3 class="text-card-headline" style="color: var(--color-ink); font-size: 27px; line-height: 1.1; margin-bottom: 10px;">Taste &amp; Gu</h3>
+          <p class="text-body-sm" style="font-size: 21px; line-height: 1.45; color: var(--color-ink);">
+            AI có thể tối ưu hiệu năng CSS rất giỏi, nhưng chọn màu sắc, bố cục để <mark>tạo cảm xúc sang trọng và chạm vào khách hàng</mark> cần một gu thẩm mỹ nghệ thuật mà AI không có.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Card 3: Safety Guardrails (Pearl) -->
+      <div class="card boundary-card" style="grid-column: 1 / span 6; grid-row: 2; border-top: 5px solid var(--color-yellow); padding: 24px 30px; background-color: var(--color-paper);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+          <div class="text-label-sm" style="color: var(--color-coral);">03 · AN TOÀN &amp; BẢO MẬT</div>
+          <span style="font-size: 28px;">🛡️</span>
+        </div>
+        <div style="margin-top: 15px;">
+          <h3 class="text-card-headline" style="color: var(--color-ink); font-size: 27px; line-height: 1.1; margin-bottom: 10px;">Human-in-the-loop</h3>
+          <p class="text-body-sm" style="font-size: 21px; line-height: 1.45; color: var(--color-ink);">
+            Con người phải duyệt lệnh cuối trước khi ghi đè db hay xóa thư mục. <mark>Tuyệt đối không cấp quyền root (sudo) vô điều kiện</mark> cho AI tự chạy terminal local.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Card 4: Legal/Accountability (Ink) -->
+      <div class="card boundary-card ink" style="grid-column: 7 / span 6; grid-row: 2; border-top: 5px solid var(--color-coral); padding: 24px 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+          <div class="text-label-sm" style="color: var(--color-yellow);">04 · TINH THẦN CHỊU TRÁCH NHIỆM</div>
+          <span style="font-size: 28px;">⚖️</span>
+        </div>
+        <div style="margin-top: 15px;">
+          <h3 class="text-card-headline" style="color: var(--color-paper); font-size: 27px; line-height: 1.1; margin-bottom: 10px;">Accountability</h3>
+          <p class="text-body-sm" style="font-size: 21px; line-height: 1.45; color: var(--color-bg);">
+            AI không có tư cách pháp nhân. Khi hệ thống lỗi gây thiệt hại tiền bạc hay pháp lý, <mark>AI không thể đi tù</mark>. Con người chịu trách nhiệm cuối cùng trước pháp luật.
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>23 · HUMAN BOUNDARIES</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        slide.initSlideCharts = function() {
+          const cards = slide.querySelectorAll('.boundary-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+            gsap.set(cards, { opacity: 0, scale: 0.95 });
+            gsap.to(cards, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: "power2.out"
+            });
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          const cards = slide.querySelectorAll('.boundary-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-24-three-golden-rules.html -->
+  <div class="slide-container" id="slide-11">
+
+    <div class="frame">
+      
+      <!-- Rule 1: Tool Overload -->
+      <div class="card rule-card" style="grid-column: 1 / span 4; grid-row: 1 / span 8; border-bottom: 8px solid var(--color-coral); padding: 36px 28px;">
+        <div>
+          <div class="text-label-sm" style="color: var(--color-coral);">NGUYÊN LÝ VÀNG 01</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 32px; line-height: 1.1; color: var(--color-ink);">Tránh quá tải<br><span style="color: var(--color-coral);">Tool Overload</span></h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.45;">
+            Cài quá nhiều MCP servers sẽ làm <mark>phình to Context Window</mark>, đốt sạch token đầu vào và làm AI bị loạn, dẫn đến gọi sai công cụ hoặc gọi sai tên hàm.
+          </p>
+          <div style="margin-top: 25px; border-left: 3px solid var(--color-ink); padding-left: 12px; font-family: var(--font-mono); font-size: 16px; color: var(--color-muted);">
+            💡 Quy tắc: Chỉ cài những tool bạn thực sự dùng hàng ngày. Tối đa 5-7 tools.
+          </div>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">ĐỘ SÂU QUAN TRỌNG HƠN ĐỘ RỘNG</div>
+      </div>
+      
+      <!-- Rule 2: Financial Guardrails (Ink) -->
+      <div class="card rule-card ink" style="grid-column: 5 / span 4; grid-row: 1 / span 8; border-bottom: 8px solid var(--color-yellow); padding: 36px 28px;">
+        <div>
+          <div class="text-label-sm" style="color: var(--color-yellow);">NGUYÊN LÝ VÀNG 02</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 32px; line-height: 1.1; color: var(--color-paper);">Hàng rào tài chính<br><span style="color: var(--color-yellow);">Financial Caps</span></h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.45; color: var(--color-bg);">
+            Trong vòng lặp tự sửa lỗi (Self-correction Loop), AI có thể tự động gọi API sửa lỗi liên tiếp hàng trăm lần. <mark>Hãy giới hạn ngân sách API hàng ngày</mark> trên bảng điều khiển.
+          </p>
+          <div style="margin-top: 25px; border-left: 3px solid var(--color-yellow); padding-left: 12px; font-family: var(--font-mono); font-size: 16px; color: var(--color-yellow);">
+            🚨 Tránh rủi ro: Thức dậy và thấy tài khoản API bay mất vài trăm USD chỉ sau một đêm.
+          </div>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">BẢO VỆ TÀI KHOẢN KHI CHẠY VÒNG LẶP</div>
+      </div>
+      
+      <!-- Rule 3: Self-documenting Workspace -->
+      <div class="card rule-card" style="grid-column: 9 / span 4; grid-row: 1 / span 8; border-bottom: 8px solid var(--color-coral); padding: 36px 28px;">
+        <div>
+          <div class="text-label-sm" style="color: var(--color-coral);">NGUYÊN LÝ VÀNG 03</div>
+          <h2 class="text-subtitle" style="margin-top: 25px; font-size: 32px; line-height: 1.1; color: var(--color-ink);">Workspace tự giải trình<br><span style="color: var(--color-coral);">Self-documenting</span></h2>
+        </div>
+        
+        <div style="margin: auto 0;">
+          <p class="text-body-sm" style="font-size: 22px; line-height: 1.45;">
+            Sử dụng các tài liệu phẳng <mark>AGENTS.md và CURRENT_CONTEXT.md</mark> làm bối cảnh tĩnh ở root dự án. Giúp bất kỳ Agent AI nào nhảy vào cũng tự biết việc mà không cần Onboarding.
+          </p>
+          <div style="margin-top: 25px; border-left: 3px solid var(--color-ink); padding-left: 12px; font-family: var(--font-mono); font-size: 16px; color: var(--color-muted);">
+            📂 Tiết kiệm token: Tri thức phẳng giúp Agent phối hợp nhịp nhàng, giảm phình context.
+          </div>
+        </div>
+        
+        <div class="text-label-xs" style="color: var(--color-muted);">TỰ ĐỘNG HÓA PHỐI HỢP CỘNG TÁC</div>
+      </div>
+      
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>24 · 3 GOLDEN RULES</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        slide.initSlideCharts = function() {
+          const cards = slide.querySelectorAll('.rule-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+            gsap.set(cards, { opacity: 0, y: 50 });
+            gsap.to(cards, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.12,
+              ease: "back.out(1.1)"
+            });
+          }
+        };
+        slide.disposeSlideCharts = function() {
+          const cards = slide.querySelectorAll('.rule-card');
+          if (cards.length > 0) {
+            gsap.killTweensOf(cards);
+          }
+        };
+      })();
+    </script>
+    </div>
+
+  <!-- slide-38-closing.html -->
+  <div class="slide-container" id="slide-12">
+
+    <div class="frame">
+      
+      <!-- Closing Central Card (Ink) -->
+      <div class="card ink" style="grid-column: 1 / span 12; grid-row: 1 / span 8; padding: 60px 80px; display: flex; flex-direction: column; justify-content: space-between;">
+        
+        <div>
+          <img src="../assets/logo/NghienAI_logo_whitetext.svg" alt="Nghiên AI" style="position: absolute; top: 60px; right: 80px; width: 180px; height: auto;">
+          <div class="text-label" style="color: var(--color-paper); opacity: 0.85; margin-bottom: 20px;">thông điệp cuối · closing message</div>
+        </div>
+
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 40px; margin-top: 20px;">
+          <h1 class="text-display" style="font-size: 69px; line-height: 1.15; color: var(--color-paper); text-transform: uppercase; letter-spacing: -0.015em;">
+            Người nghiệp dư<br>
+            đi săn <mark>model mới</mark>.<br>
+            Người chuyên nghiệp<br>
+            thầm lặng <svg class="draw-text-svg" viewBox="0 0 540 82" width="540" height="82" style="display: inline-block; vertical-align: middle; margin-left: 5px; overflow: visible;">
+              <text class="draw-text" x="0" y="62" font-family="var(--font-display)" font-size="72" font-weight="900" fill="none" stroke="var(--color-yellow)" stroke-width="3" stroke-dasharray="1000" stroke-dashoffset="1000" style="text-transform: uppercase; letter-spacing: -0.015em;">XÂY HỆ THỐNG</text>
+            </svg>
+          </h1>
+          
+          <p class="text-body" style="font-size: 32px; line-height: 1.45; color: var(--color-paper); opacity: 0.9; max-width: 1200px;">
+            Hệ thống hóa quy trình nghiệp vụ (SOP), tối ưu hóa bàn làm việc (Tooling) và làm giàu bối cảnh (Context Vault) mới là vũ khí tối mật giúp doanh nghiệp dẫn đầu cuộc chơi năng suất.
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid rgba(255, 255, 255, 0.2); padding-top: 15px;">
+          <div class="text-label-xs" style="color: var(--color-paper); opacity: 0.85;">© 2026 NGHIEN.AI · KIẾN TẠO HỆ THỐNG VẬN HÀNH AIworker CHUYÊN NGHIỆP</div>
+          <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--color-coral);">BUILD SYSTEM, NOT ONLY PROMPTS</div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="pagenum"><span class="glow-dot"></span><span>38 · CLOSING</span></div>
+    
+    <script>
+      (function() {
+        const slide = document.currentScript.closest('.slide-container');
+        let tl = null;
+
+        slide.initSlideCharts = function() {
+          const text = slide.querySelector('.draw-text');
+          if (text) {
+            if (tl) tl.kill();
+            gsap.killTweensOf(text);
+            
+            // Set initial dashed state (transparent fill, yellow stroke offset 1000)
+            gsap.set(text, { strokeDashoffset: 1000, fill: "rgba(255, 224, 50, 0)" });
+            
+            tl = gsap.timeline({ delay: 0.6 });
+            
+            // Draw outline, then fill with yellow
+            tl.to(text, { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" })
+              .to(text, { fill: "var(--color-yellow)", duration: 0.6, ease: "power1.out" });
+          }
+        };
+
+        slide.disposeSlideCharts = function() {
+          if (tl) tl.kill();
+          const text = slide.querySelector('.draw-text');
+          if (text) {
+            gsap.killTweensOf(text);
+            gsap.set(text, { strokeDashoffset: 1000, fill: "none" });
+          }
+        };
+      })();
+    </script>
+    </div>
+
+
+
+  <!-- Module 4: In-Browser Dev Tuning Panel -->
+  <div id="dev-tuning-panel" style="position: fixed; bottom: 15px; right: 15px; z-index: 9999; background: var(--color-ink); color: var(--color-paper); border: var(--border-width) solid var(--color-paper); padding: 20px; font-family: var(--font-mono); font-size: 12px; box-shadow: 6px 6px 0 var(--color-ink); width: 330px; display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: bold; border-bottom: 1.5px solid rgba(255,255,255,0.25); padding-bottom: 6px;">
+      <span>🎨 DESIGN SYSTEM TUNER</span>
+      <button onclick="document.getElementById('dev-tuning-panel').style.display='none'" style="background: none; border: none; color: var(--color-accent); font-weight: bold; font-family: var(--font-mono); font-size: 14px; cursor: pointer;">[X]</button>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <label>Paper:</label> <input type="color" id="tuner-paper" value="#FFFDF6" oninput="updateTunerVar('--color-paper', this.value)">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <label>Ink:</label> <input type="color" id="tuner-ink" value="#2A3140" oninput="updateTunerVar('--color-ink', this.value)">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <label>Accent:</label> <input type="color" id="tuner-accent" value="#FF623B" oninput="updateTunerVar('--color-accent', this.value)">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <label>Yellow:</label> <input type="color" id="tuner-yellow" value="#FFE032" oninput="updateTunerVar('--color-yellow', this.value)">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+      <label>Border Width:</label>
+      <input type="range" min="1" max="10" value="3" oninput="updateTunerVar('--border-width', this.value + 'px')">
+    </div>
+    <button onclick="exportTunerConfig()" style="width: 100%; padding: 8px; background-color: var(--color-yellow); color: var(--color-ink); border: var(--border-width) solid var(--color-ink); font-weight: bold; font-family: var(--font-mono); font-size: 12px; cursor: pointer; box-shadow: 3px 3px 0 var(--color-paper);">EXPORT CONFIG</button>
+  </div>
+  <button id="tuner-toggle-btn" onclick="document.getElementById('dev-tuning-panel').style.display='block'" style="position: fixed; bottom: 15px; right: 15px; z-index: 9998; padding: 6px 12px; background: var(--color-yellow); color: var(--color-ink); border: var(--border-width) solid var(--color-ink); font-family: var(--font-mono); font-weight: bold; font-size: 12px; cursor: pointer; box-shadow: 3px 3px 0 var(--color-ink);">🎨 TUNE</button>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-container');
+
+    // Module 3: Presenter sync channel
+    const syncChannel = new BroadcastChannel('slide-navigation-sync');
+    syncChannel.onmessage = (event) => {
+      if (event.data && event.data.type === 'navigate-slide') {
+        showSlide(event.data.index);
+      }
+      if (event.data && event.data.type === 'request-notes') {
+        const targetSlide = slides[event.data.index];
+        const notesEl = targetSlide ? targetSlide.querySelector('aside.speaker-notes') : null;
+        const notesHtml = notesEl ? notesEl.innerHTML : "(Không có ghi chú thuyết trình)";
+        
+        let nextTitle = "(Hết bài trình chiếu)";
+        const nextSlide = slides[event.data.index + 1];
+        if (nextSlide) {
+          const nextHeader = nextSlide.querySelector('h2.text-subtitle');
+          nextTitle = nextHeader ? nextHeader.textContent : `Slide ${event.data.index + 2}`;
+        }
+        
+        syncChannel.postMessage({
+          type: 'notes-response',
+          notes: notesHtml,
+          nextTitle: nextTitle
+        });
+      }
+    };
+
+    function showSlide(idx) {
+      if (idx < 0 || idx >= slides.length) return;
+      
+      const prevSlide = slides[currentSlide];
+      if (prevSlide) {
+        if (typeof prevSlide.disposeSlideCharts === 'function') {
+          try {
+            prevSlide.disposeSlideCharts();
+          } catch(e) {
+            console.error("Error disposing slide charts: ", e);
+          }
+        }
+        prevSlide.classList.remove('is-active');
+        prevSlide.style.transform = '';
+        prevSlide.style.position = '';
+        prevSlide.style.left = '';
+        prevSlide.style.top = '';
+      }
+      
+      currentSlide = idx;
+      const activeSlide = slides[currentSlide];
+      activeSlide.classList.add('is-active');
+      resizeSlide();
+      updatePageNumText(currentSlide);
+      
+      // Initialize active slide's animations
+      if (activeSlide && typeof activeSlide.initSlideCharts === 'function') {
+        try {
+          activeSlide.initSlideCharts();
+        } catch(e) {
+          console.error("Error initializing slide charts: ", e);
+        }
+      }
+
+      // Sync state with presenter console
+      syncChannel.postMessage({ type: 'slide-changed', index: idx, total: slides.length });
+
+      // Sync URL hash
+      history.replaceState(null, "", "#" + (currentSlide + 1));
+    }
+
+    // Module 1: Zine random card tilting (ignoring flipping card faces)
+    function applyZineCardTilts() {
+      const randomTilt = true;
+      if (randomTilt) {
+        const maxTilt = 1.5;
+        document.querySelectorAll('.card:not(.front):not(.back):not(.card-flip-front):not(.card-flip-back)').forEach(card => {
+          const tilt = (Math.random() * maxTilt * 2 - maxTilt).toFixed(2);
+          card.style.transform = "rotate(" + tilt + "deg)";
+        });
+      }
+    }
+
+    function updatePageNumText(idx) {
+      const activeSlide = slides[idx];
+      const pageNumEl = activeSlide.querySelector('.pagenum span:last-child');
+      if (!pageNumEl) return;
+      
+      if (!pageNumEl.dataset.originalText) {
+        pageNumEl.dataset.originalText = pageNumEl.textContent;
+      }
+      
+      let origText = pageNumEl.dataset.originalText;
+      const dotIndex = origText.indexOf('·');
+      const titlePart = dotIndex !== -1 ? origText.substring(dotIndex + 1).trim() : origText;
+      const slideNumStr = String(idx + 1).padStart(2, '0');
+      
+      let newText = slideNumStr + " · " + titlePart;
+      if (idx < slides.length - 1) {
+        const nextSlide = slides[idx + 1];
+        const nextPageNumEl = nextSlide.querySelector('.pagenum span:last-child');
+        if (nextPageNumEl) {
+          const nextOrigText = nextPageNumEl.dataset.originalText || nextPageNumEl.textContent;
+          const nextDotIndex = nextOrigText.indexOf('·');
+          const nextTitlePart = nextDotIndex !== -1 ? nextOrigText.substring(nextDotIndex + 1).trim() : nextOrigText;
+          const nextSlideNumStr = String(idx + 2).padStart(2, '0');
+          newText += " ➔ TIẾP THEO: " + nextSlideNumStr + " · " + nextTitlePart;
+        }
+      } else {
+        newText += " ➔ HẾT PRESENTATION";
+      }
+      pageNumEl.textContent = newText;
+    }
+
+    function resizeSlide() {
+      const activeSlide = document.querySelector('.slide-container.is-active');
+      if (!activeSlide) return;
+      const targetWidth = 1920;
+      const targetHeight = 1280;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      
+      const scale = Math.min(windowWidth / targetWidth, windowHeight / targetHeight);
+      
+      activeSlide.style.position = 'absolute';
+      activeSlide.style.left = '50%';
+      activeSlide.style.top = '50%';
+      activeSlide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      activeSlide.style.transformOrigin = 'center center';
+    }
+
+    // Keyboard controls
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) {
+        return;
+      }
+      
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide((currentSlide + 1) % slides.length);
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide((currentSlide - 1 + slides.length) % slides.length);
+      }
+    });
+
+    // Click anywhere on slide to transition
+    slides.forEach(slide => {
+      slide.addEventListener('click', (e) => {
+        if (e.target.closest("a, button, input, select, textarea, .chart-container, .table, #dev-tuning-panel, #tuner-toggle-btn, .flip-card, .flip-container, .widget-card-flip, .slider-track, .slider-thumb, .slider-fill, .simulator-container, .widget-balance-scale, .widget-force-graph, .widget-liquid-gauge, .widget-flow-diagram")) {
+          return;
+        }
+        showSlide((currentSlide + 1) % slides.length);
+      });
+    });
+
+    function syncFromHash() {
+      const hashNumber = Number(location.hash.replace("#", ""));
+      const idx = (hashNumber >= 1 && hashNumber <= slides.length) ? (hashNumber - 1) : 0;
+      showSlide(idx);
+    }
+
+    // Module 4: Tuner panel support
+    function updateTunerVar(varName, val) {
+      document.documentElement.style.setProperty(varName, val);
+    }
+    function exportTunerConfig() {
+      const style = getComputedStyle(document.documentElement);
+      const updated = {
+        theme: "Exported Theme",
+        colors: {
+          paper: style.getPropertyValue('--color-paper').trim(),
+          ink: style.getPropertyValue('--color-ink').trim(),
+          accent: style.getPropertyValue('--color-accent').trim(),
+          yellow: style.getPropertyValue('--color-yellow').trim(),
+          muted: "#5A6272",
+          bg: "#F7F5ED"
+        },
+        typography: {
+          display: "'Space Grotesk', Helvetica Neue, Helvetica, Arial, sans-serif",
+          mono: "'JetBrains Mono', ui-monospace, monospace",
+          body: "'Space Grotesk', Helvetica Neue, Helvetica, Arial, sans-serif"
+        },
+        brutalist: {
+          borderWidth: style.getPropertyValue('--border-width').trim(),
+          shadowOffset: "8px",
+          borderRadius: "0px",
+          randomCardTilt: true,
+          maxTiltAngle: 1.5,
+          halftoneOverlay: true
+        }
+      };
+      console.log("EXPORTED CONFIGURATION (copy & paste into design-system.json):");
+      console.log(JSON.stringify(updated, null, 2));
+      alert("Design system config JSON printed to browser console! Open Console to copy it.");
+    }
+
+    window.addEventListener('resize', resizeSlide);
+    window.addEventListener('hashchange', syncFromHash);
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      syncFromHash();
+      applyZineCardTilts();
+    });
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      syncFromHash();
+      applyZineCardTilts();
+    }
+  </script>
+</body>
+</html>
